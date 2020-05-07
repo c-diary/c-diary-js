@@ -12,6 +12,9 @@
   },
   "keywords": [],
   "author": "",
+  "files": [
+    "lib/**/*"
+  ],
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^25.1.4",
