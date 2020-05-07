@@ -16,6 +16,10 @@ export class Wallet {
         this.key = new RSA(keyData);
     }
 
+    export(): string {
+        return this.key.exportKey();
+    }
+
     async encrypt(data: any) {
         return this.key.encrypt(data, 'base64');
     }

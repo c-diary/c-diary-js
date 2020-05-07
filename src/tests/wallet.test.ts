@@ -1,6 +1,6 @@
 import { Wallet } from '../wallet';
 
-test('sing', async () => {
+test('sign', async () => {
 
     const aliceWallet = new Wallet();
     const bobWallet = new Wallet();
@@ -39,4 +39,13 @@ test('encrypt', async() =>{
     const aliceEncryptedMessage = await aliceWalletAtBob.encrypt(bobMessage);
     const aliceMessage = await aliceWallet.decrypt(aliceEncryptedMessage)
     expect(aliceMessage).toEqual(bobMessage);
+})
+
+test('export', async() => {
+    const aliceWallet = new Wallet();
+    const bobWallet = new Wallet();
+
+    aliceWallet.generate();
+    bobWallet.import(aliceWallet.export());
+    expect(aliceWallet.getPublicKey()).toEqual(bobWallet.getPublicKey());
 })
